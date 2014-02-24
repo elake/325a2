@@ -1,0 +1,13 @@
+-- data types are defined by constructor patterns
+-- Eq equality can be derived from structural equality
+     
+-- a binary tree consisting of leaves L or internal nodes N
+data BinTree = L | N BinTree BinTree deriving (Eq, Show)
+     
+-- this function creates the full binary tree of size 2^(n+1) -1
+makeBinTree 0 = L
+makeBinTree n = N (makeBinTree (n-1)) (makeBinTree (n-1))
+     
+-- this function computes the size of a binary tree
+size L = 1
+size (N t1 t2) = 1 + size t1 + size t2
